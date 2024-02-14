@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Test Regression Suite for Swag Labs" thread-count="2"
+	parallel="tests" verbose="4">
+
+
+	<listeners>
+		<listener
+			class-name="swaglabs.listeners.AnnotationTransformer" />
+		
+		<listener
+			class-name="swaglabs.listeners.AllureReportListener" />
+		
+	</listeners>
+
+
+	<test name="Login Page Test">
+		<classes>
+			<class name = "swaglabs.tests.LoginPageTest"/>
+		</classes>
+	</test>
+	
+	<test name="Product Listing Page Test">
+		<classes>
+			<class name = "swaglabs.tests.ProductListingPageTest"/>
+		</classes>
+		</test>
+		
+		<test name="Product Details Page Test">
+		<classes>
+			<class name = "swaglabs.tests.ProductDetailsPageTest"/>
+		</classes>
+		
+	</test>
+	
+	<test name="Cart Page Test">
+		<classes>
+			<class name = "swaglabs.tests.CartPageTest"/>
+		</classes>
+		
+	</test>
+	
+	<test name="Checkout Page Test">
+		<classes>
+			<class name = "swaglabs.tests.CheckoutPageTest"/>
+		</classes>
+		
+	</test>
+	
+		<test name="Checkout Overview Page Test">
+		<classes>
+			<class name = "swaglabs.tests.CheckoutOverviewPageTest"/>
+		</classes>
+		
+	</test>
+	
+	
+	
+	
+		
+</suite>
