@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
-import org.apache.logging.log4j.core.util.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +15,6 @@ import org.openqa.selenium.io.FileHandler;
 public class DriverFactory {
 
 	public WebDriver driver;
-
 	public static String highlight;
 	private OptionsManager optionsManager;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
@@ -30,28 +27,16 @@ public class DriverFactory {
 		highlight = prop.getProperty("highlight");
 		System.out.println("Brower Name is:" + browserName);
 		if (browserName.equalsIgnoreCase("chrome")) {
-
-			// driver = new ChromeDriver(optionsManager.getchromeOptions());
 			tlDriver.set(new ChromeDriver(optionsManager.getchromeOptions()));
-
-		}
-
-		else if (browserName.equalsIgnoreCase("firefox")) {
-
-			// driver = new FirefoxDriver(optionsManager.getfirefoxOptions());
+		} else if (browserName.equalsIgnoreCase("firefox")) {
 			tlDriver.set(new FirefoxDriver(optionsManager.getfirefoxOptions()));
-
-		}
-
-		else {
+		} else {
 			System.out.println("Please pass correct browser Name:" + browserName);
 		}
-
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		getDriver().get(prop.getProperty("URL"));
 		return getDriver();
-
 	}
 
 	public static WebDriver getDriver() {
@@ -69,35 +54,28 @@ public class DriverFactory {
 				System.out.println("Running on PROD environment:" + env);
 
 				ip = new FileInputStream("./swaglabs.resources/resources/config.properties");
-			}
-
-			else {
-
+			} else {
 				System.out.println("Runnin on the environment:" + env);
-
 				switch (env) {
 				case "staging":
 					ip = new FileInputStream("./swaglabs.resources/resources/staging.config.properties");
 					break;
-
 				default:
 					System.out.println("No Env found");
-					throw new Exception ("NOENVFOUNDEXCEPTION");
+					throw new Exception("NOENVFOUNDEXCEPTION");
 				}
 			}
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			prop = new Properties();
 			prop.load(ip);
 
-		}  catch (IOException e) {
+		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
@@ -105,7 +83,6 @@ public class DriverFactory {
 	}
 
 	// Screenshot Method to take a screenshot
-
 	public String getScreenshot() {
 		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 		String path = System.getProperty("user.dir") + "/screenshot/" + System.currentTimeMillis() + ".png";
@@ -114,10 +91,8 @@ public class DriverFactory {
 		try {
 			FileHandler.copy(srcFile, destination);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return path;
 	}
-
 }

@@ -1,11 +1,9 @@
 package swaglabs.tests;
 
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
 import swaglabs.factory.DriverFactory;
 import swaglabs.pages.CartPage;
 import swaglabs.pages.CheckoutOverviewPage;
@@ -16,7 +14,7 @@ import swaglabs.pages.ProductDetailsPage;
 import swaglabs.pages.ProductListingPage;
 
 public class BaseTest {
-	
+
 	WebDriver driver;
 	DriverFactory df;
 	Properties prop;
@@ -27,25 +25,17 @@ public class BaseTest {
 	CheckoutPage checkoutPage;
 	CheckoutOverviewPage checkoutoverviewPage;
 	OrderCompletePage ordercomPage;
-	
+
 	@BeforeTest
-	
-	public void setup()
-	{
-		
+	public void setup() {
 		df = new DriverFactory();
 		prop = df.initProperties();
 		driver = df.initDriver(prop);
 		loginpage = new LoginPage(driver);
-		//proDetailsPage = new ProductDetailsPage(driver);
-		//prodlistingPage = new ProductListingPage(driver);
-	}
-	
-	@AfterTest
-	
-	public void tearDown()
-	{
-		driver.quit();
 	}
 
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
+	}
 }

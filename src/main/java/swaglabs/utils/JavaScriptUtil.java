@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class JavaScriptUtil {
-	
+
 	private WebDriver driver;
 
 	public JavaScriptUtil(WebDriver driver) {
@@ -13,7 +13,7 @@ public class JavaScriptUtil {
 	}
 
 	public void flash(WebElement element) {
-		String bgcolor = element.getCssValue("backgroundColor");//purple
+		String bgcolor = element.getCssValue("backgroundColor");// purple
 		for (int i = 0; i < 15; i++) {
 			changeColor("rgb(0,200,0)", element);// green
 			changeColor(bgcolor, element);// purple
@@ -84,6 +84,4 @@ public class JavaScriptUtil {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
-
-
 }

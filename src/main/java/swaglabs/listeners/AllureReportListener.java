@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import io.qameta.allure.Attachment;
 import swaglabs.factory.DriverFactory;
 
@@ -37,7 +36,7 @@ public class AllureReportListener implements ITestListener {
 	@Override
 	public void onStart(ITestContext iTestContext) {
 		System.out.println("I am in on Start method " + iTestContext.getName());
-		//iTestContext.setAttribute("WebDriver", BasePage.getDriver());
+		// iTestContext.setAttribute("WebDriver", BasePage.getDriver());
 	}
 
 	@Override
@@ -59,14 +58,13 @@ public class AllureReportListener implements ITestListener {
 	public void onTestFailure(ITestResult iTestResult) {
 		System.out.println("I am in on Test Failure method " + getTestMethodName(iTestResult) + " failed");
 		Object testClass = iTestResult.getInstance();
-		//WebDriver driver = BasePage.getDriver();
 		// Allure ScreenShotRobot and SaveTestLog
-		if (DriverFactory.getDriver()instanceof WebDriver) {
+		if (DriverFactory.getDriver() instanceof WebDriver) {
 			System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));
 			saveScreenshotPNG(DriverFactory.getDriver());
 		}
 		// Save a log on allure.
-		saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");		
+		saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
 	}
 
 	@Override
@@ -78,5 +76,4 @@ public class AllureReportListener implements ITestListener {
 	public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
 		System.out.println("Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
 	}
-
 }
