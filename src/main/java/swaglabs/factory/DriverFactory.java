@@ -21,8 +21,8 @@ public class DriverFactory {
 // This method is used to intilize the driver
 	public WebDriver initDriver(Properties prop) {
 		String browserName = prop.getProperty("browser");
-		highlight = prop.getProperty("highlight");
 		optionsManager = new OptionsManager(prop);
+		highlight = prop.getProperty("highlight");
 		System.out.println("Brower Name is:" + browserName);
 		if (browserName.equalsIgnoreCase("chrome")) {
 			tlDriver.set(new ChromeDriver(optionsManager.getchromeOptions()));
