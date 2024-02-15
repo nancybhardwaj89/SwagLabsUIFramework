@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class OptionsManager {
-
 	private Properties prop;
 	private ChromeOptions co;
 	private FirefoxOptions fo;
@@ -21,7 +20,6 @@ public class OptionsManager {
 		}
 		if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
 			co.addArguments("--incognito");
-
 		}
 		return co;
 	}
@@ -35,7 +33,6 @@ public class OptionsManager {
 			co.addArguments("--incognito");
 
 		}
-
 		return fo;
 	}
 }

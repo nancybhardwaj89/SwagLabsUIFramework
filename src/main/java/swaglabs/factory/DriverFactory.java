@@ -13,18 +13,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 
 public class DriverFactory {
-
 	public WebDriver driver;
 	public static String highlight;
 	private OptionsManager optionsManager;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
-	// This method is used to intilize the driver
+// This method is used to intilize the driver
 	public WebDriver initDriver(Properties prop) {
 		String browserName = prop.getProperty("browser");
 		optionsManager = new OptionsManager(prop);
-
-		highlight = prop.getProperty("highlight");
 		System.out.println("Brower Name is:" + browserName);
 		if (browserName.equalsIgnoreCase("chrome")) {
 			tlDriver.set(new ChromeDriver(optionsManager.getchromeOptions()));
@@ -46,9 +43,7 @@ public class DriverFactory {
 	public Properties initProperties() {
 		Properties prop = null;
 		FileInputStream ip = null;
-
 		String env = System.getProperty("env"); // will be passing through maven as mvn clean install -Denv
-
 		try {
 			if (env == null) {
 				System.out.println("Running on PROD environment:" + env);
@@ -65,7 +60,6 @@ public class DriverFactory {
 					throw new Exception("NOENVFOUNDEXCEPTION");
 				}
 			}
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -74,9 +68,7 @@ public class DriverFactory {
 		try {
 			prop = new Properties();
 			prop.load(ip);
-
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 		return prop;
