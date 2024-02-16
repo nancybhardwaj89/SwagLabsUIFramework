@@ -75,7 +75,6 @@ public class DriverFactory {
 		return prop;
 	}
 
-	// Screenshot Method to take a screenshot
 	public String getScreenshot() {
 		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 		String path = System.getProperty("user.dir") + "/screenshot/" + System.currentTimeMillis() + ".png";

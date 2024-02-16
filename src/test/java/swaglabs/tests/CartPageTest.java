@@ -27,6 +27,5 @@ public class CartPageTest extends BaseTest {
 		checkoutPage = cartPage.clickonCheckout();
 		String checkoutPagTxt = checkoutPage.getCheckoutPageHeader();
 		Assert.assertEquals(checkoutPagTxt, Constants.CHECKOUT_PAGE_HEADER);
-
 	}
 }

@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import swaglabs.utils.ElementUtil;
 
 public class CheckoutOverviewPage {
-
 	private WebDriver driver;
 	private ElementUtil elementUtil;
 	private By checkoutOverviewPgHeader = By.xpath("//span[@class='title' and text()='Checkout: Overview']");
