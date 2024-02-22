@@ -4,6 +4,8 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+
 import swaglabs.factory.DriverFactory;
 import swaglabs.pages.CartPage;
 import swaglabs.pages.CheckoutOverviewPage;
@@ -26,10 +28,15 @@ public class BaseTest {
 	CheckoutOverviewPage checkoutoverviewPage;
 	OrderCompletePage ordercomPage;
 
+	@Parameters({ "browser", "browserversion" })
 	@BeforeTest
-	public void setup() {
+	public void setup(String browserName, String browserVersion) {
 		df = new DriverFactory();
 		prop = df.initProperties();
+		if (browserName != null) {
+			prop.setProperty("browser", browserName);
+			prop.setProperty("browserversion", browserVersion);
+		}
 		driver = df.initDriver(prop);
 		loginpage = new LoginPage(driver);
 	}

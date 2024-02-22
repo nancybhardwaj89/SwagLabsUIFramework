@@ -15,11 +15,22 @@
 	</listeners>
 
 
-	<test name="Login Page Test">
+	<test name="Login Page Test_chrome121">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="browserversion" value="121"/>
 		<classes>
-			<class name = "swaglabs.tests.LoginPageTest"/>
+			<class name = "swaglabs.tests.LoginPageTest"/>		
 		</classes>
 	</test>
+	
+	<test name="Login Page Test_chrome113">
+		<parameter name="browser" value="chrome"/>
+		<parameter name="browserversion" value="113"/>
+		<classes>
+			<class name = "swaglabs.tests.LoginPageTest"/>		
+		</classes>
+	</test>
+	<!-- 
 	
 	<test name="Product Listing Page Test">
 		<classes>
@@ -54,8 +65,7 @@
 		</classes>
 		
 	</test>
-	
-	
+	-->
 	
 	
 		
